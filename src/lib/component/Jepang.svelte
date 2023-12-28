@@ -6,12 +6,13 @@
  let loading = true;
 
  
- const url  = "https://corsany-1-g0403094.deta.app/https://poophd.com/api/list?key=raQu2lrd&folder=9DVR9eBBSMH"
+ // const url  = "https://corsany-1-g0403094.deta.app/https://poophd.com/api/list?key=raQu2lrd&folder=9DVR9eBBSMH"
+ const url  = "https://pooptest.vercel.app/jepang"
 
 
   let currentpage = 1
    async function getapi(page){
-    const response = await fetch(`${url}&page=${page}`);
+    const response = await fetch(`${url}?page=${page}`);
     const data = await response.json();
     videos = data.videos;
      loading = false;
@@ -53,7 +54,7 @@
   </div>
 </div>
 <br>
-<h5 style="color:white">Sedang Mencari data ....</h5>
+<h5 style="color:white">Sedang Nyari BOKEP ....</h5>
 <br>
 <p>Jika Terlalu lama bisa refresh kembali atau close buka lagi</p>
 </div>

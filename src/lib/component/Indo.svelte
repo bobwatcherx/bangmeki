@@ -8,10 +8,11 @@
  
   let currentpage = 1
 
-const url  = "https://corsany-1-g0403094.deta.app/https://poophd.com/api/list?key=raQu2lrd&folder=ropbn60oORX"
+// const url  = "https://corsany-1-g0403094.deta.app/https://poophd.com/api/list?key=raQu2lrd&folder=ropbn60oORX"
+const url  = "https://pooptest.vercel.app/indo"
 
 async function getapi(page){
-    const response = await fetch(`${url}&page=${page}`);
+    const response = await fetch(`${url}?page=${page}`);
     const data = await response.json();
     videos = data.videos;
      loading = false;
