@@ -9,15 +9,15 @@
   let max_page = 863
   
   async function related() {
-  const jepang_url = "https://pooptest.vercel.app/jepang";
-  const indo_url = "https://pooptest.vercel.app/indo";
+  const jepang_url = "https://pooptest.vercel.app/film?kode_film=9DVR9eBBSMH";
+  const indo_url = "https://pooptest.vercel.app/film?kode_film=ropbn60oORX";
   const page_select = Math.floor(Math.random() * max_page) + 1; // Menghasilkan angka acak antara 1 hingga 46
 
   loading = true; // Menampilkan indikator loading
 
   try {
     const selected_url = Math.random() < 0.5 ? indo_url : jepang_url; // Memilih URL secara acak
-    const response = await fetch(`${selected_url}?page=${page_select}` ); // Mengambil data dengan URL terpilih dan nomor halaman terpilih
+    const response = await fetch(`${selected_url}&page=${page_select}` ); // Mengambil data dengan URL terpilih dan nomor halaman terpilih
     const data = await response.json();
     relatedVideos = data.videos;
   } catch (error) {
@@ -62,7 +62,7 @@
 	</div>
 </div>
 	<div style="margin-top:10px">
-		<iframe src={`https://doodx.pro/e/${id}`}
+		<iframe src={`https://doodss.pro/e/${id}`}
 		allowfullscreen width="100%" height="330px"
 		allowscrolling="no" 
 		></iframe>
@@ -71,7 +71,7 @@
 	<!-- TOMBOL DOWNLOAD -->
 	<div style="margin:10px">
 		<a 
-		 href={`https://cuty.io/quick?token=3c2f8445e662326c2ebcd8d60&url=https://doodx.pro/d/${id}`}
+		 href={`https://cuty.io/quick?token=3c2f8445e662326c2ebcd8d60&url=https://doodss.pro/d/${id}`}
 		 target="_blank"
 		class="waves-effect btn"
 		on:contextmenu="{handleContextMenu}"

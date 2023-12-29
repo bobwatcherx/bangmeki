@@ -7,12 +7,12 @@
 
  
  // const url  = "https://corsany-1-g0403094.deta.app/https://poophd.com/api/list?key=raQu2lrd&folder=9DVR9eBBSMH"
- const url  = "https://pooptest.vercel.app/jepang"
+ const url  = "https://pooptest.vercel.app/film?kode_film=9DVR9eBBSMH"
 
 
   let currentpage = 1
    async function getapi(page){
-    const response = await fetch(`${url}?page=${page}`);
+    const response = await fetch(`${url}&page=${page}`);
     const data = await response.json();
     videos = data.videos;
      loading = false;
