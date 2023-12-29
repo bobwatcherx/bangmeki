@@ -7,8 +7,10 @@
  let searchTitle = "sextb"
  
   let currentpage = 1
+  let selectedOption = "";
 
-const url  = "https://corsany-1-g0403094.deta.app/https://poophd.com/api/search?key=raQu2lrd"
+  const options = [50, 100, 300,500];
+const url  = "https://pooptest.vercel.app/cari"
 
 async function getapi(page){
   loading = true
@@ -16,7 +18,7 @@ async function getapi(page){
     if(searchTerm == ""){
       searchTerm = "sextb"
     }
-    const response = await fetch(`${url}&title=${searchTitle}&page=${page}`);
+    const response = await fetch(`${url}?search=${searchTitle}&page=${page}&limit=${selectedOption}`);
     const data = await response.json();
     videos = data.videos;
      loading = false;
@@ -64,6 +66,13 @@ async function getapi(page){
   name="" style="background-color:white;color:black;padding:3px;width: 100%;"
   placeholder="cari bokep lu mau disini bos" 
   >
+  <span style="color:white">Pilih banyak Bokep : </span>
+  <select bind:value={selectedOption}>
+    {#each options as option}
+      <option value={option}>{option + ' Bokep'}</option>
+    {/each}
+  </select>
+  <br>
   <button class="btn btn-success mt-2" 
   style="font-weight:bold" 
   type="button"
@@ -89,7 +98,7 @@ async function getapi(page){
   </div>
 </div>
 <br>
-<h5 style="color:white">Sedang Mencari data ....</h5>
+<h5 style="color:white">Sedang NYARI BOKEP YG LU MAU ....</h5>
 <br>
 <p>Jika Terlalu lama bisa refresh kembali atau close buka lagi</p>
 </div>
@@ -98,7 +107,7 @@ async function getapi(page){
 {:else}
 <div class="row">
   {#each videos as video (video.id)}
-    <div class="col m4 xl4 mb-4 s12">
+    <div class="col-md-3 mb-4 col-sm-12">
       <div style="margin:10px;padding: 10px;
       background-color: black;border-radius: 30px;
       " class="z-depth-4">
@@ -109,7 +118,7 @@ async function getapi(page){
         <div class="card-body">
           <h6 style="font-weight:bold">{video.title}</h6>
 
-          <div style="display:flex;justify-content:space-evenly;">
+          <div >
              <p class="card-text">Durasi : {video.duration}</p>
           <p class="card-text">Diupload : {video.date_formatted}
          </p>
