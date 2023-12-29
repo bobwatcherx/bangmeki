@@ -6,7 +6,7 @@
   let loading = true;
   let relatedVideos = [];
 
-  let max_page = 899
+  let max_page = 900
   
   async function related() {
   const jepang_url = "https://pooptest.vercel.app/film?kode_film=9DVR9eBBSMH";
