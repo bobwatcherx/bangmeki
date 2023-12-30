@@ -6,7 +6,7 @@
   let loading = true;
   let relatedVideos = [];
 
-  let max_page = 901
+  let max_page = 917
   
   async function related() {
   const jepang_url = "https://pooptest.vercel.app/film?kode_film=9DVR9eBBSMH";
@@ -62,7 +62,7 @@
 	</div>
 </div>
 	<div style="margin-top:10px">
-		<iframe src={`https://doodss.pro/e/${id}`}
+		<iframe src={`https://dood.meme/e/${id}`}
 		allowfullscreen width="100%" height="330px"
 		allowscrolling="no" 
 		></iframe>
@@ -71,7 +71,7 @@
 	<!-- TOMBOL DOWNLOAD -->
 	<div style="margin:10px">
 		<a 
-		 href={`https://cuty.io/quick?token=3c2f8445e662326c2ebcd8d60&url=https://doodss.pro/d/${id}`}
+		 href={`https://cuty.io/quick?token=3c2f8445e662326c2ebcd8d60&url=https://dood.meme/d/${id}`}
 		 target="_blank"
 		class="waves-effect btn"
 		on:contextmenu="{handleContextMenu}"
