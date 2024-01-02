@@ -6,18 +6,13 @@
   let loading = true;
   let relatedVideos = [];
 
-  let max_page = 968
   
   async function related() {
-  const jepang_url = "https://pooptest.vercel.app/film?kode_film=9DVR9eBBSMH";
-  const indo_url = "https://pooptest.vercel.app/film?kode_film=ropbn60oORX";
-  const page_select = Math.floor(Math.random() * max_page) + 1; // Menghasilkan angka acak antara 1 hingga 46
-
+  const url = "https://pooptest.vercel.app/related";
   loading = true; // Menampilkan indikator loading
 
   try {
-    const selected_url = Math.random() < 0.5 ? indo_url : jepang_url; // Memilih URL secara acak
-    const response = await fetch(`${selected_url}&page=${page_select}` ); // Mengambil data dengan URL terpilih dan nomor halaman terpilih
+    const response = await fetch(url); // Mengambil data dengan URL terpilih dan nomor halaman terpilih
     const data = await response.json();
     relatedVideos = data.videos;
   } catch (error) {
