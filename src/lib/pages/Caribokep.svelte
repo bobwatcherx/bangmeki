@@ -99,7 +99,7 @@ async function getapi(page){
 {:else}
 <div class="row g-0">
   {#each videos as video (video.id)}
-    <div class="col-6 col-md-3 col-lg-4 col-sm-6">
+    <div class="col-6 col-md-3 col-lg-3 col-sm-6">
       <div class="card shadow">
         <Link class="linkto" to={`/player/${video.id}`}>
           <img src={video.image} alt={video.title} 
