@@ -86,19 +86,11 @@ async function getapi(page){
   margin: 50px;
 "
 > 
-<div class="preloader-wrapper active">
-  <div class="spinner-layer spinner-orange-only">
-    <div class="circle-clipper left">
-      <div class="circle"></div>
-    </div><div class="gap-patch">
-      <div class="circle"></div>
-    </div><div class="circle-clipper right">
-      <div class="circle"></div>
-    </div>
-  </div>
+<div class="spinner-border text-danger" role="status">
+  <span class="sr-only">Loading...</span>
 </div>
 <br>
-<h5 style="color:white">Sedang NYARI BOKEP YG LU MAU ....</h5>
+<h5 >Sedang NYARI BOKEP YG LU MAU ....</h5>
 <br>
 <p>Jika Terlalu lama bisa refresh kembali atau close buka lagi</p>
 </div>
