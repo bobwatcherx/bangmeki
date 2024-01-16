@@ -75,7 +75,7 @@
 		"> Download Bokep Disini </a>
 		<p style="color:red;font-weight: bold;
 		text-align: center;background-color: white;
-		">Lewatin Iklan ouo.io Kalo Mau download bokep</p>
+		">Lewatin Iklannya Kalo Mau download bokep</p>
 	</div>
 
 	<!-- RELATED -->
