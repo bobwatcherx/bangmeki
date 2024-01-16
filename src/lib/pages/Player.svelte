@@ -42,7 +42,7 @@
 		<button on:click={()=>navigate(-1)} class="waves-effect btn "
 	style="background-color: #b00c50;color:white;font-weight: bold;"
 	>
-		Kembali
+		Sebelumnya
 	</button>
 	<button on:click={()=>navigate(1)} class="waves-effect btn "
 	style="background-color: #b00c50;color:white;font-weight: bold;"
