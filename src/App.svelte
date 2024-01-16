@@ -11,7 +11,7 @@
 
 
 <Router>
-    <div style="background-color:#42424a;">
+    <div >
     <Navbarmenu/>
   <div>
     <Route path="/">

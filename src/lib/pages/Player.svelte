@@ -40,12 +40,12 @@
 	<div class="container" style="margin-top: 10px;">
 	<div style="display:flex;justify-content:space-between;">
 		<button on:click={()=>navigate(-1)} class="waves-effect btn "
-	style="background-color: #e68c07;font-weight: bold;"
+	style="background-color: #b00c50;color:white;font-weight: bold;"
 	>
 		Kembali
 	</button>
 	<button on:click={()=>navigate(1)} class="waves-effect btn "
-	style="background-color: #e68c07;font-weight: bold;"
+	style="background-color: #b00c50;color:white;font-weight: bold;"
 	>
 		Setelahnya
 	</button>
@@ -71,7 +71,7 @@
 		class="waves-effect btn"
 		on:contextmenu="{handleContextMenu}"
 		style="width: 100%;
-		background-color: #ff6edb;color:black;font-weight: bold;
+		background-color: #b00c50;color:white;font-weight: bold;
 		"> Download Bokep Disini </a>
 		<p style="color:red;font-weight: bold;
 		text-align: center;background-color: white;
@@ -89,47 +89,43 @@
 		  margin: 50px;
 		"
 		> 
-		<div class="preloader-wrapper active">
-		  <div class="spinner-layer spinner-orange-only">
-		    <div class="circle-clipper left">
-		      <div class="circle"></div>
-		    </div><div class="gap-patch">
-		      <div class="circle"></div>
-		    </div><div class="circle-clipper right">
-		      <div class="circle"></div>
-		    </div>
-		  </div>
-		</div>
+		<div class="spinner-border text-danger" role="status">
+			  <span class="sr-only">Loading...</span>
+			</div>
 		<br>
-		<h5 style="color:white">Sedang Nyari BOKEP ....</h5>
+		<h5 >Sedang Nyari BOKEP ....</h5>
 		<br>
 		<p>Jika Terlalu lama bisa refresh kembali atau close buka lagi</p>
 		</div>
 	{:else}
-	  <div class="row">
+	<div class="container">
+		<h4>Bokep lainnya</h4>
+	</div>
+	  <div class="row g-0">
 	  		{#each relatedVideos as video (video.id)}
-	    <div class="col-md-4 col-lg-4 col-xs-6" >
-	      <div class="card" on:click={()=>gotopage(video.id)}>
-	        <div class="card-image">
+	    <div class="col-6 col-md-4 col-lg-3 col-sm-6" >
+	      <div class="card shadow" on:click={()=>gotopage(video.id)}>
+	        <div >
 	          <img src={video.image} alt={video.title} style="width:100%;background-size:cover;">
 	        </div>
-	        <div class="card-content" style="color:white;background-color:black">
-	          <span style="font-size: 15px;font-weight: bold">{video.title}</span>
-	          <p>Durasi: {video.duration}</p>
+	        <div  class="container">
+	           <h6 style="font-weight:bold;color:#b00c50;font-size: 14px">{video.title.length > 40 ? `${video.title.slice(0, 40)}...` : video.title}</h6>
 	          
-	          <div style="display:flex;justify-content:space-evenly;">
+	          <div >
+	          <p>{video.duration}</p>
 	          	<p>Views: {video.views}</p>
-	          <p>Tanggal: {video.date_formatted}</p>
+	          <p style="color:#b00c50;font-weight: bold"> {video.date_formatted}</p>
 	          </div>
 	        </div>
-	        <div  style="background-color:#ff9903;padding:10px">
-	          <button 
-	          style="color: black;font-weight: bold;
-	          text-align: center;font-size: 18px;
-	          background-color:#ff9903;border:0px;
-	          "
-	          on:click={()=>gotopage(video.id)}>Nonton Sekarang</button>
-	        </div>
+	        <div style="display:flex;justify-content: center;">
+            <!-- ACTION -->
+              <button on:click={()=>gotopage(video.id)} class="waves-effect btn waves-light"
+              style="background-color: #b00c50;color:white;
+              "
+              >
+              Nonton
+            </button>
+          </div>
 	      </div>
 	    </div>
 	  {/each}
@@ -142,5 +138,9 @@
   
   .spinner-orange-only .circle {
   border-color: #f0e6cc ;
+}
+.row .col-6{
+  margin:0px ;
+  padding: 0px;
 }
 </style>

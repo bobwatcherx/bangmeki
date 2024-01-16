@@ -60,13 +60,13 @@ async function getapi(page){
     >Kembali</button>
 </div>
 <div style="margin:30px">
-  <p style="color:white;font-size:15px;font-weight: bold;">Lu cari bokep yang lu mau disini</p>
+  <p style="font-size:15px;font-weight: bold;">Lu cari bokep yang lu mau disini</p>
   <input type="text" 
   bind:value={searchTitle}
-  name="" style="background-color:white;color:black;padding:3px;width: 100%;"
+  name="" style="padding:3px;width: 100%;"
   placeholder="cari bokep lu mau disini bos" 
   >
-  <span style="color:white">Pilih banyak Bokep : </span>
+  <span >Pilih banyak Bokep : </span>
   <select bind:value={selectedOption}>
     {#each options as option}
       <option value={option}>{option + ' Bokep'}</option>
@@ -105,22 +105,19 @@ async function getapi(page){
 
 
 {:else}
-<div class="row">
+<div class="row g-0">
   {#each videos as video (video.id)}
-    <div class="col-md-3 mb-4 col-sm-12">
-      <div style="margin:10px;padding: 10px;
-      background-color: black;border-radius: 30px;
-      " class="z-depth-4">
+    <div class="col-6 col-md-3 col-lg-4 col-sm-6">
+      <div class="card shadow">
         <Link class="linkto" to={`/player/${video.id}`}>
           <img src={video.image} alt={video.title} 
-          style="width:100%;background-size: cover;border-radius: 30px;"
+          style="width:100%;background-size: cover;"
           />
         <div class="card-body">
-          <h6 style="font-weight:bold">{video.title}</h6>
-
+          <h6 style="font-weight:bold;color:#b00c50;font-size: 14px">{video.title.length > 40 ? `${video.title.slice(0, 40)}...` : video.title}</h6>
           <div >
              <p class="card-text">Durasi : {video.duration}</p>
-          <p class="card-text">Diupload : {video.date_formatted}
+          <p class="card-text"  style="color:#b00c50;font-weight: bold">{video.date_formatted}
          </p>
           </div>
              <p class="card-text">Ditonton : {video.views}</p>
@@ -161,5 +158,9 @@ async function getapi(page){
   
   .spinner-orange-only .circle {
   border-color: #f0e6cc ;
+}
+.row .col-6{
+  margin:0px ;
+  padding: 0px;
 }
 </style>

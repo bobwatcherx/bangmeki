@@ -43,44 +43,32 @@ const url  = "https://pooptest.vercel.app/film?kode_film=xrTt2e6x9eS"
   margin: 50px;
 "
 > 
-<div class="preloader-wrapper active">
-  <div class="spinner-layer spinner-orange-only">
-    <div class="circle-clipper left">
-      <div class="circle"></div>
-    </div><div class="gap-patch">
-      <div class="circle"></div>
-    </div><div class="circle-clipper right">
-      <div class="circle"></div>
-    </div>
-  </div>
+<div class="spinner-border text-danger" role="status">
+  <span class="sr-only">Loading...</span>
 </div>
 <br>
-<h5 style="color:white">Sedang NYARI BOKEP ....</h5>
+<h5 >Sedang NYARI BOKEP ....</h5>
 <br>
 <p>Jika Terlalu lama bisa refresh kembali atau close buka lagi</p>
 </div>
 
 
 {:else}
-<div class="row">
+<div class="row g-0">
   {#each videos as video (video.id)}
-    <div class="col m4 xl4 mb-4 s12">
-      <div style="margin:10px;padding: 10px;
-      background-color: black;border-radius: 30px;
-      " class="z-depth-4">
-        <Link class="linkto" to={`/player/${video.id}`}>
+    <div class="col-6 col-md-4 col-lg-4 col-sm-6">
+      <div  class="card shadow">
           <img src={video.image} alt={video.title} 
-          style="width:100%;background-size: cover;border-radius: 30px;"
+          style="width:100%;background-size: cover;"
           />
         <div class="card-body">
-          <h6 style="font-weight:bold">{video.title}</h6>
-
-          <div style="display:flex;justify-content:space-evenly;">
-             <p class="card-text">Durasi : {video.duration}</p>
-          <p class="card-text">Diupload : {video.date_formatted}
+          <h6 style="font-weight:bold;color:#b00c50;font-size: 14px">{video.title.length > 40 ? `${video.title.slice(0, 40)}...` : video.title}</h6>
+          <div >
+             <p class="card-text">{video.duration}</p>
+          <p class="card-text" style="color:#b00c50;font-weight: bold">{video.date_formatted}
          </p>
           </div>
-            <p class="card-text">Ditonton : {video.views}</p>
+            <p class="card-text" >Ditonton : {video.views}</p>
 
           <div style="display:flex;justify-content: end;">
             <!-- ACTION -->
@@ -93,7 +81,6 @@ const url  = "https://pooptest.vercel.app/film?kode_film=xrTt2e6x9eS"
             </Link>
           </div>
         </div>
-        </Link>
 
       </div>
     </div>
@@ -117,5 +104,9 @@ const url  = "https://pooptest.vercel.app/film?kode_film=xrTt2e6x9eS"
   
   .spinner-orange-only .circle {
   border-color: #f0e6cc ;
+}
+.row .col-6{
+  margin:0px ;
+  padding: 0px;
 }
 </style>
