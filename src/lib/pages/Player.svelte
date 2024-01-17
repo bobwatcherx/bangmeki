@@ -3,6 +3,8 @@
   import { onMount } from 'svelte';
   import { Link,navigate } from 'svelte-navigator';
   import {base_api,apikey} from '../../configapi/api.js'
+
+  import {BASE_DOMAIN} from '../../base/domain.js'
   let loading = true;
   let relatedVideos = [];
 
@@ -39,25 +41,25 @@
 <div>
 	<div class="container" style="margin-top: 10px;">
 	<div style="display:flex;justify-content:space-between;">
-		<button on:click={()=>navigate(-1)} class="waves-effect btn "
+		<button on:click={()=>navigate("/")} class="waves-effect btn "
 	style="background-color: #b00c50;color:white;font-weight: bold;"
 	>
-		Sebelumnya
+		Kembali
 	</button>
-	<button on:click={()=>navigate(1)} class="waves-effect btn "
+	<!-- <button on:click={()=>navigate(1)} class="waves-effect btn "
 	style="background-color: #b00c50;color:white;font-weight: bold;"
 	>
 		Setelahnya
-	</button>
+	</button> -->
 	<Link to="/caribokep" class="waves-effect btn "
-	style="background-color: #5eff08;font-weight: bold;color:black"
+	style="background-color: #b00c50;font-weight: bold;color:white"
 	>
 		Cari Bokep
 	</Link>
 	</div>
 </div>
 	<div style="margin-top:10px">
-		<iframe src={`https://doodx.pro/e/${id}`}
+		<iframe src={`${BASE_DOMAIN}/e/${id}`}
 		allowfullscreen width="100%" height="330px"
 		allowscrolling="no" 
 		></iframe>
@@ -66,7 +68,7 @@
 	<!-- TOMBOL DOWNLOAD -->
 	<div style="margin:10px">
 		<a 
-		 href={`https://cuty.io/quick?token=3c2f8445e662326c2ebcd8d60&url=https://doodx.pro/d/${id}`}
+		 href={`https://cuty.io/quick?token=3c2f8445e662326c2ebcd8d60&url=${BASE_DOMAIN}/d/${id}`}
 		 target="_blank"
 		class="waves-effect btn"
 		on:contextmenu="{handleContextMenu}"

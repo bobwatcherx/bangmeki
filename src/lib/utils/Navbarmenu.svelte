@@ -6,14 +6,9 @@
 	class="p-1 shadow" 
 	>
 		<h5 style="font-weight: bold;" on:click={()=>navigate("/")}>Bang MEKI</h5>
-		<Link to="/" class="waves-effect btn"
-		style="background-color: red;color: white;"
-		>
-		Beranda
-	</Link>
 
-		<Link to="/request" class="waves-effect btn"
-		style="background-color: #ffa805;color: black;"
+		<Link to="/request" class="waves-effect btn btn-light"
+		style="font-weight: bold"
 		>
 		Request Bokep
 	</Link>

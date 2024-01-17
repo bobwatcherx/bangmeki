@@ -16,11 +16,11 @@
 				Cari Bokep
 			</Link>
 	</div>
-	<div style="margin:10px">
+	<!-- <div style="margin:10px">
 		 <Link to="/permintaan" class="btn "
     style="width: 100%;background-color: #fa0ae2;font-weight: bold;"
   >Request Kalian Disini</Link>
-	</div>
+	</div> -->
 	<div >
 		<p>Demi Anak Sayang Bokep . Kami Selaku Pengepul bokep . akan selalu memberikan bokep terupdate , termontok , terbohai setiap hari . jadi jangan lupa untuk pantau web ini . yang mau request </p>
 	</div>
