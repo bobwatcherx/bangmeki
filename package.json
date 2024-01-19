@@ -19,6 +19,7 @@
     "vite": "^4.4.5"
   },
   "dependencies": {
-    "svelte-navigator": "^3.2.2"
+    "svelte-navigator": "^3.2.2",
+    "sweetalert2": "^11.10.3"
   }
 }

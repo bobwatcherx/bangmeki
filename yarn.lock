@@ -789,6 +789,11 @@ svelte@^4.0.5:
     magic-string "^0.30.0"
     periscopic "^3.1.0"
 
+sweetalert2@^11.10.3:
+  version "11.10.3"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.10.3.tgz#4e21a0c021404c8a1e00f54821092a8488aae04e"
+  integrity sha512-mZYtQR7v+khyEruq0SsVUa6XIdI9Aue8s2XAIpAwdlLN1T0w7mxKEjyubiBZ3/bLbHC/wGS4wNABvXWubCizvA==
+
 to-regex-range@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/to-regex-range/-/to-regex-range-5.0.1.tgz#1648c44aae7c8d988a326018ed72f5b4dd0392e4"

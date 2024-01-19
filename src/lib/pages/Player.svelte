@@ -3,6 +3,7 @@
   import { onMount } from 'svelte';
   import { Link,navigate } from 'svelte-navigator';
   import {base_api,apikey} from '../../configapi/api.js'
+ 	import Swal from 'sweetalert2';
 
   import {BASE_DOMAIN} from '../../base/domain.js'
   let loading = true;
@@ -35,6 +36,19 @@
   }
    function handleContextMenu(event) {
     event.preventDefault();
+  }
+function opentutor() {
+    Swal.fire({
+      title: 'Tutorial Download BOKEP',
+      html: `
+      <div>
+      <p style="font-weight:bold;color:red">Lu back aja Terus Setiap ada iklan </p>
+      <video controls width="100%" autoplay="true" src="https://cdn.videy.co/8gbloQTg.mp4"></video>
+      </div>
+      `,
+      showCloseButton: true,
+      showConfirmButton: false,
+    });
   }
 </script>
 
@@ -75,6 +89,13 @@
 		style="width: 100%;
 		background-color: #b00c50;color:white;font-weight: bold;
 		"> Download Bokep Disini </a>
+
+		<!-- TUTOR -->
+		<div class="mt-2 mb-2">
+		<button class="btn btn-danger"
+		on:click={opentutor}
+		>Tutor Cara Download BOKEP</button>
+		</div>
 		<p style="color:red;font-weight: bold;
 		text-align: center;background-color: white;
 		">Lewatin Iklannya Kalo Mau download bokep</p>
