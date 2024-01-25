@@ -1,6 +1,7 @@
 <script>
   import { onMount ,afterUpdate} from 'svelte';
-  import {base_api,apikey} from '../../configapi/api.js'
+ import {BASE_API} from '../../base/domain.js'
+
   import {Link,navigate} from 'svelte-navigator'
   let videos = []
  let loading = true;
@@ -10,7 +11,7 @@
   let selectedOption = "";
 
   const options = [50, 100, 300,500];
-const url  = "https://pooptest.vercel.app/cari"
+const url  = BASE_API + "/cari"
 
 async function getapi(page){
   loading = true

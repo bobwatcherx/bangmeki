@@ -1,13 +1,13 @@
 <script>
   import { onMount ,afterUpdate} from 'svelte';
-  import {base_api,apikey} from '../../configapi/api.js'
+ import {BASE_API} from '../../base/domain.js'
   import {Link} from 'svelte-navigator'
   let videos = []
  let loading = true;
 
  
  // const url  = "https://corsany-1-g0403094.deta.app/https://poophd.com/api/list?key=raQu2lrd&folder=F0K2rRlBbJF"
- const url  = "https://pooptest.vercel.app/film?kode_film=F0K2rRlBbJF"
+ const url  =  BASE_API + "/film?kode_film=F0K2rRlBbJF"
 
 
 

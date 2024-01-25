@@ -2,7 +2,7 @@
   export let id;
   import { onMount } from 'svelte';
   import { Link,navigate } from 'svelte-navigator';
-  import {base_api,apikey} from '../../configapi/api.js'
+ import {BASE_API} from '../../base/domain.js'
  	import Swal from 'sweetalert2';
 
   import {BASE_DOMAIN} from '../../base/domain.js'
@@ -11,7 +11,7 @@
 
   
   async function related() {
-  const url = "https://pooptest.vercel.app/related";
+  const url = BASE_API + "/related";
   loading = true; // Menampilkan indikator loading
 
   try {

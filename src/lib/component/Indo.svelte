@@ -1,6 +1,7 @@
 <script>
   import { onMount ,afterUpdate} from 'svelte';
-  import {base_api,apikey} from '../../configapi/api.js'
+ import {BASE_API} from '../../base/domain.js'
+ 
   import {Link} from 'svelte-navigator'
   let videos = []
  let loading = true;
@@ -9,7 +10,7 @@
   let currentpage = 1
 
 // const url  = "https://corsany-1-g0403094.deta.app/https://poophd.com/api/list?key=raQu2lrd&folder=ropbn60oORX"
-const url  = "https://bobwatcherx-serverpoophd.hf.space/film?kode_film=ropbn60oORX"
+const url  = BASE_API + "/film?kode_film=ropbn60oORX"
 
 async function getapi(page){
     const response = await fetch(`${url}&page=${page}`);
