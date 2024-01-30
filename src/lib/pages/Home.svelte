@@ -1,4 +1,5 @@
 <script >
+import Semua from '../component/Semua.svelte' 
 import Indo from '../component/Indo.svelte' 
 import Jepang from '../component/Jepang.svelte' 
 import Barat from '../component/Barat.svelte' 
@@ -19,12 +20,12 @@ import {Link} from 'svelte-navigator'
   <h5>Pilih Genre Bokep</h5>
 </div>
 <div class="tab-container" style="margin:10px">
-  <div class="tab " on:click={() => setActiveTab(1)}>INDO</div>
-  <div class="tab" on:click={() => setActiveTab(2)}>Jepang</div>
-<div class="tab" on:click={() => setActiveTab(3)}>Barat</div>
-<div class="tab" on:click={() => setActiveTab(4)}>Annal</div>
+  <div class="tab " on:click={() => setActiveTab(1)}>Semua</div>
+  <div class="tab " on:click={() => setActiveTab(2)}>INDO</div>
+  <div class="tab" on:click={() => setActiveTab(3)}>Jepang</div>
+<div class="tab" on:click={() => setActiveTab(4)}>Barat</div>
+<div class="tab" on:click={() => setActiveTab(5)}>Annal</div>
 
-  <!-- Tambahkan tab lain sesuai kebutuhan -->
 </div>
   
 <div style="margin:10px;">
@@ -32,29 +33,31 @@ import {Link} from 'svelte-navigator'
     style="width: 100%;background-color: #b00c50;color:white;font-weight: bold;margin-bottom: 20px"
   >Cari BOKEP Lu Mau</Link>
 
-  <!-- REQUEST PERMINTAAN -->
-  <!-- <Link to="/permintaan" class="btn "
-    style="width: 100%;background-color: #fa0ae2;font-weight: bold;"
-  >Request Kalian Disini</Link> -->
+ 
 </div>
 
 	<div class="content">
-  {#if activeTab === 1}
+    {#if activeTab === 1}
+  <div style="margin:10px">
+    <h5 style="color:#ab074b;font-weight: bold;">Semua Bokep Paling MONTOK</h5>
+  </div>
+    <Semua />
+  {:else if activeTab === 2}
   <div style="margin:10px">
   	<h5 style="color:#ab074b;font-weight: bold;">Bokep Indo</h5>
   </div>
     <Indo />
-  {:else if activeTab === 2}
+  {:else if activeTab === 3}
      <div style="margin:10px">
     <h5 style="color:#b00c50;font-weight: bold;">Bokep Jepang</h5>
   </div>
     <Jepang />
-  {:else if activeTab === 3}
+  {:else if activeTab === 4}
     <div style="margin:10px">
     <h5 style="color:#f5b505;font-weight: bold;">Bokep Barat</h5>
   </div>
     <Barat />
-  {:else if activeTab === 4}
+  {:else if activeTab === 5}
     <div style="margin:10px">
     <h5 style="color:#f5b505;font-weight: bold;">Bokep Annal</h5>
   </div>

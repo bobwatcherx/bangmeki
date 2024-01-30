@@ -1,38 +1,60 @@
 <script>
-  import { onMount ,afterUpdate} from 'svelte';
+  import { onMount } from 'svelte';
  import {BASE_API} from '../../base/domain.js'
- 
+  import Swal from 'sweetalert2';
+
   import {Link} from 'svelte-navigator'
   let videos = []
  let loading = true;
-
+ let loadingrelated = false
  
   let currentpage = 1
 
-// const url  = "https://corsany-1-g0403094.deta.app/https://poophd.com/api/list?key=raQu2lrd&folder=ropbn60oORX"
-const url  = BASE_API + "/film?kode_film=ropbn60oORX"
 
-async function getapi(page){
-    const response = await fetch(`${url}&page=${page}`);
+
+  async function getapi() {
+  const url = BASE_API + "/related";
+
+  try {
+    const response = await fetch(url); // Mengambil data dengan URL terpilih dan nomor halaman terpilih
     const data = await response.json();
     videos = data.videos;
-     loading = false;
+  } catch (error) {
+    console.error("Gagal mengambil video terkait:", error);
+  } finally {
+    loading = false; // Sembunyikan indikator loading setelah data diambil
   }
+}
 
-  onMount(async () => {
-    await getapi(currentpage)
+
+
+  onMount( () => {
+     getapi()
   });
 
-  afterUpdate(async () => {
-    await getapi(currentpage);
-  });
 
-  async function gotoPage(page) {
-    if (page >= 1 ) {
-      loading = true
-      currentpage = page;
-      await getapi(currentpage);
-    }
+
+  async function gotoPage() {
+      currentpage++
+      loadingrelated = true
+      const url = BASE_API + "/related";
+
+      try {
+        const response = await fetch(url); // Mengambil data dengan URL terpilih dan nomor halaman terpilih
+        const data = await response.json();
+          videos = [...videos, ...data.videos];
+      } catch (error) {
+        console.error("Gagal mengambil video terkait:", error);
+      } finally {
+            Swal.fire({
+      icon: 'success',
+      title: 'GW Tambahin Bokep Lagi . Biar GACENG',
+      position: 'top-end', // Set the position to top-end
+      showConfirmButton: false, // Hide the "OK" button
+      timer: 2000 
+    });
+        loadingrelated = false; // Sembunyikan indikator loading setelah data diambil
+      }
   }
 </script>
 
@@ -89,13 +111,18 @@ async function getapi(page){
   {/each}
 </div>
     <div style="display:flex;justify-content: space-around;margin-top: 20px">
-      <button class="waves-effect btn waves"
+    <button on:click="{gotoPage}"
+      class="waves-effect btn waves zoom-in-out"
       style="background-color:#fabb0f;color: black;" 
-       on:click="{() => gotoPage(currentpage - 1)}" disabled="{currentpage === 1}">Previous</button>
-    <button on:click="{() => gotoPage(currentpage + 1)}"
-      class="waves-effect btn waves"
-      style="background-color:#fabb0f;color: black;" 
-        >Next</button>
+        >Tambah Bokep Lagi BANG</button>
+    </div>
+
+    <div style="margin-bottom: 100px;margin-top:30px;display: flex;justify-content: center;">
+      {#if loadingrelated}
+       <div class="spinner-border text-danger" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      {/if}
     </div>
 
 {/if}
@@ -109,4 +136,17 @@ async function getapi(page){
   margin:0px ;
   padding: 0px;
 }
+ .zoom-in-out {
+    animation: zoomInOut 1.5s infinite alternate; /* Adjust the animation duration as needed */
+    transform-origin: center;
+  }
+
+  @keyframes zoomInOut {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.5);
+    }
+  }
 </style>
