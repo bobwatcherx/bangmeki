@@ -2,8 +2,6 @@
 import Semua from '../component/Semua.svelte' 
 import Indo from '../component/Indo.svelte' 
 import Jepang from '../component/Jepang.svelte' 
-import Barat from '../component/Barat.svelte' 
-import Annal from '../component/Annal.svelte' 
 import {Link} from 'svelte-navigator' 
 
  let activeTab = 1; // Menentukan tab aktif secara default
@@ -23,8 +21,6 @@ import {Link} from 'svelte-navigator'
   <div class="tab " on:click={() => setActiveTab(1)}>Semua</div>
   <div class="tab " on:click={() => setActiveTab(2)}>INDO</div>
   <div class="tab" on:click={() => setActiveTab(3)}>Jepang</div>
-<div class="tab" on:click={() => setActiveTab(4)}>Barat</div>
-<div class="tab" on:click={() => setActiveTab(5)}>Annal</div>
 
 </div>
   
@@ -52,16 +48,6 @@ import {Link} from 'svelte-navigator'
     <h5 style="color:#b00c50;font-weight: bold;">Bokep Jepang</h5>
   </div>
     <Jepang />
-  {:else if activeTab === 4}
-    <div style="margin:10px">
-    <h5 style="color:#f5b505;font-weight: bold;">Bokep Barat</h5>
-  </div>
-    <Barat />
-  {:else if activeTab === 5}
-    <div style="margin:10px">
-    <h5 style="color:#f5b505;font-weight: bold;">Bokep Annal</h5>
-  </div>
-    <Annal />
   <!-- Tambahkan blok lain untuk komponen tambahan -->
   {/if}
 </div>
