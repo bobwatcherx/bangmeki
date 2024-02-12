@@ -73,6 +73,5 @@ import {Link} from 'svelte-navigator'
 
   .content {
     width: 100%; /* Pastikan konten memenuhi lebar */
-    overflow-x: hidden; /* Sembunyikan scrollbar horizontal di dalam konten */
   }
 </style>

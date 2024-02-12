@@ -1,7 +1,8 @@
 <script>
-  import { onMount ,afterUpdate} from 'svelte';
+  import { onMount } from 'svelte';
  import {BASE_API} from '../../base/domain.js'
- 
+  import Swal from 'sweetalert2';
+  import {f_indo} from '../../configapi/api.js'
   import {Link} from 'svelte-navigator'
   let videos = []
  let loading = true;
@@ -9,29 +10,36 @@
  
   let currentpage = 1
 
-// const url  = "https://corsany-1-g0403094.deta.app/https://poophd.com/api/list?key=raQu2lrd&folder=ropbn60oORX"
-const url  = BASE_API + "/film?kode_film=ropbn60oORX"
+const url  = BASE_API + "/film?kode_film=" + f_indo
 
-async function getapi(page){
-    const response = await fetch(`${url}&page=${page}`);
+async function getapi(){
+    const response = await fetch(`${url}`);
     const data = await response.json();
     videos = data.videos;
      loading = false;
   }
 
   onMount(async () => {
-    await getapi(currentpage)
+    await getapi()
   });
-
-  afterUpdate(async () => {
-    await getapi(currentpage);
-  });
+async function tambahbokep(){
+    const response = await fetch(`${url}`);
+    const data = await response.json();
+    videos = [...videos, ...data.videos];
+      Swal.fire({
+      icon: 'success',
+      title: 'GW Tambahin Bokep Lagi . Biar GACENG',
+      position: 'top-end', // Set the position to top-end
+      showConfirmButton: false, // Hide the "OK" button
+      timer: 2000 
+    });
+  }
+  
 
   async function gotoPage(page) {
     if (page >= 1 ) {
-      loading = true
       currentpage = page;
-      await getapi(currentpage);
+      await tambahbokep();
     }
   }
 </script>
@@ -88,14 +96,11 @@ async function getapi(page){
     </div>
   {/each}
 </div>
-    <div style="display:flex;justify-content: space-around;margin-top: 20px">
-      <button class="waves-effect btn waves"
-      style="background-color:#fabb0f;color: black;" 
-       on:click="{() => gotoPage(currentpage - 1)}" disabled="{currentpage === 1}">Previous</button>
+    <div style="display:flex;justify-content: center;margin-top: 20px">
     <button on:click="{() => gotoPage(currentpage + 1)}"
-      class="waves-effect btn waves"
+      class="waves-effect btn waves zoom-in-out "
       style="background-color:#fabb0f;color: black;" 
-        >Next</button>
+        >Tambah Bokep BANG</button>
     </div>
 
 {/if}
@@ -109,4 +114,17 @@ async function getapi(page){
   margin:0px ;
   padding: 0px;
 }
+.zoom-in-out {
+    animation: zoomInOut 1.5s infinite alternate; /* Adjust the animation duration as needed */
+    transform-origin: center;
+  }
+
+  @keyframes zoomInOut {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.5);
+    }
+  }
 </style>

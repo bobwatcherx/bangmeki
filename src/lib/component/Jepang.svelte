@@ -1,37 +1,45 @@
 <script>
-  import { onMount ,afterUpdate} from 'svelte';
+  import { onMount } from 'svelte';
  import {BASE_API} from '../../base/domain.js'
-
+  import Swal from 'sweetalert2';
+  import {f_jepang} from '../../configapi/api.js'
   import {Link} from 'svelte-navigator'
   let videos = []
  let loading = true;
 
  
- // const url  = "https://corsany-1-g0403094.deta.app/https://poophd.com/api/list?key=raQu2lrd&folder=9DVR9eBBSMH"
- const url  =  BASE_API + "/film?kode_film=9DVR9eBBSMH"
-
-
   let currentpage = 1
-   async function getapi(page){
-    const response = await fetch(`${url}&page=${page}`);
+
+const url  = BASE_API + "/film?kode_film=" + f_jepang
+
+async function getapi(){
+    const response = await fetch(`${url}`);
     const data = await response.json();
     videos = data.videos;
      loading = false;
   }
 
   onMount(async () => {
-    await getapi(currentpage)
+    await getapi()
   });
-
-  afterUpdate(async () => {
-    await getapi(currentpage);
-  });
+async function tambahbokep(){
+    const response = await fetch(`${url}`);
+    const data = await response.json();
+    videos = [...videos, ...data.videos];
+      Swal.fire({
+      icon: 'success',
+      title: 'GW Tambahin Bokep Lagi . Biar GACENG',
+      position: 'top-end', // Set the position to top-end
+      showConfirmButton: false, // Hide the "OK" button
+      timer: 2000 
+    });
+  }
+  
 
   async function gotoPage(page) {
     if (page >= 1 ) {
-      loading = true
       currentpage = page;
-      await getapi(currentpage);
+      await tambahbokep();
     }
   }
 </script>
@@ -56,26 +64,27 @@
 {:else}
 <div class="row g-0">
   {#each videos as video (video.id)}
-    <div class="col-6 col-md-4 col-lg-4 col-sm-6">
-      <div  class="card shadow">
+    <div class="col-6 col-md-4 col-lg-3 col-sm-6">
+      <div  class=" card shadow">
           <img src={video.image} alt={video.title} 
-          style="width:100%;background-size: cover;"
+          style="width:100%;background-size: cover;
+          width: 100%;"
           />
-        <div class="card-body">
+        <div class="container">
           <h6 style="font-weight:bold;color:#b00c50;font-size: 14px">{video.title.length > 40 ? `${video.title.slice(0, 40)}...` : video.title}</h6>
 
           <div >
-             <p class="card-text">{video.duration}</p>
-          <p class="card-text" style="color:#b00c50;font-weight: bold">{video.date_formatted}
+             <p>{video.duration}</p>
+          <p style="color:#b00c50;font-weight: bold">{video.date_formatted}
          </p>
           </div>
-          <p class="card-text">Ditonton : {video.views}</p>
+             <p >Ditonton : {video.views}</p>
+
 
           <div style="display:flex;justify-content: end;">
             <!-- ACTION -->
               <Link to={`/player/${video.id}`} class="waves-effect btn waves-light"
-              style="background-color: #fabb0f;color: black;
-              border-radius: 30px;
+              style="background-color: #b00c50;color:white;
               "
               >
               Nonton
@@ -87,17 +96,12 @@
     </div>
   {/each}
 </div>
-  <div class="row">
-    <div style="display:flex;justify-content: space-evenly;">
-      <button class="waves-effect btn waves"
-      style="background-color:#fabb0f;color: black;" 
-       on:click="{() => gotoPage(currentpage - 1)}" disabled="{currentpage === 1}">Previous</button>
+    <div style="display:flex;justify-content: center;margin-top: 20px">
     <button on:click="{() => gotoPage(currentpage + 1)}"
-      class="waves-effect btn waves"
+      class="waves-effect btn waves zoom-in-out"
       style="background-color:#fabb0f;color: black;" 
-        >Next</button>
+        >Tambah Bokep BANG</button>
     </div>
-  </div>
 
 {/if}
 
@@ -110,4 +114,17 @@
   margin:0px ;
   padding: 0px;
 }
+ .zoom-in-out {
+    animation: zoomInOut 1.5s infinite alternate; /* Adjust the animation duration as needed */
+    transform-origin: center;
+  }
+
+  @keyframes zoomInOut {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.5);
+    }
+  }
 </style>
