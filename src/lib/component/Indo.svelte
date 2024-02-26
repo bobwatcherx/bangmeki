@@ -1,8 +1,7 @@
 <script>
   import { onMount } from 'svelte';
- import {BASE_API} from '../../base/domain.js'
+ import {BASE_API,f_indo,key_api} from '../../base/domain.js'
   import Swal from 'sweetalert2';
-  import {f_indo} from '../../configapi/api.js'
   import {Link} from 'svelte-navigator'
   let videos = []
  let loading = true;
@@ -10,7 +9,7 @@
  
   let currentpage = 1
 
-const url  = BASE_API + "/film?kode_film=" + f_indo
+const url  = BASE_API + "/film?kode_film=" + f_indo + "&key_api=" + key_api 
 
 async function getapi(){
     const response = await fetch(`${url}`);
@@ -74,11 +73,9 @@ async function tambahbokep(){
           <h6 style="font-weight:bold;color:#b00c50;font-size: 14px">{video.title.length > 40 ? `${video.title.slice(0, 40)}...` : video.title}</h6>
 
           <div >
-             <p>{video.duration}</p>
           <p style="color:#b00c50;font-weight: bold">{video.date_formatted}
          </p>
           </div>
-             <p >Ditonton : {video.views}</p>
 
 
           <div style="display:flex;justify-content: end;">

@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
- import {BASE_API} from '../../base/domain.js'
+ import {BASE_API,key_api} from '../../base/domain.js'
   import Swal from 'sweetalert2';
 
   import {Link} from 'svelte-navigator'
@@ -13,7 +13,7 @@
 
 
   async function getapi() {
-  const url = BASE_API + "/related";
+  const url = BASE_API + "/related?key_api=" + key_api;
 
   try {
     const response = await fetch(url); // Mengambil data dengan URL terpilih dan nomor halaman terpilih
@@ -37,7 +37,7 @@
   async function gotoPage() {
       currentpage++
       loadingrelated = true
-      const url = BASE_API + "/related";
+      const url = BASE_API + "/related?key_api=" + key_api;
 
       try {
         const response = await fetch(url); // Mengambil data dengan URL terpilih dan nomor halaman terpilih
@@ -88,11 +88,9 @@
           <h6 style="font-weight:bold;color:#b00c50;font-size: 14px">{video.title.length > 40 ? `${video.title.slice(0, 40)}...` : video.title}</h6>
 
           <div >
-             <p>{video.duration}</p>
           <p style="color:#b00c50;font-weight: bold">{video.date_formatted}
          </p>
           </div>
-             <p >Ditonton : {video.views}</p>
 
 
           <div style="display:flex;justify-content: end;">

@@ -2,7 +2,7 @@
   export let id;
   import { onMount } from 'svelte';
   import { Link,navigate } from 'svelte-navigator';
- import {BASE_API} from '../../base/domain.js'
+ import {BASE_API,key_api} from '../../base/domain.js'
  	import Swal from 'sweetalert2';
 
   import {BASE_DOMAIN} from '../../base/domain.js'
@@ -11,7 +11,7 @@
 
   
   async function related() {
-  const url = BASE_API + "/related";
+  const url = BASE_API + "/related?key_api=" + key_api;
   loading = true; // Menampilkan indikator loading
 
   try {
@@ -60,11 +60,7 @@ function opentutor() {
 	>
 		Kembali
 	</button>
-	<!-- <button on:click={()=>navigate(1)} class="waves-effect btn "
-	style="background-color: #b00c50;color:white;font-weight: bold;"
-	>
-		Setelahnya
-	</button> -->
+	
 	<Link to="/caribokep" class="waves-effect btn "
 	style="background-color: #b00c50;font-weight: bold;color:white"
 	>
@@ -122,7 +118,7 @@ function opentutor() {
 		</div>
 	{:else}
 	<div class="container">
-		<h4>Bokep lainnya</h4>
+		<h4>Bokep Montok lainnya</h4>
 	</div>
 	  <div class="row g-0">
 	  		{#each relatedVideos as video (video.id)}
@@ -135,8 +131,6 @@ function opentutor() {
 	           <h6 style="font-weight:bold;color:#b00c50;font-size: 14px">{video.title.length > 40 ? `${video.title.slice(0, 40)}...` : video.title}</h6>
 	          
 	          <div >
-	          <p>{video.duration}</p>
-	          	<p>Views: {video.views}</p>
 	          <p style="color:#b00c50;font-weight: bold"> {video.date_formatted}</p>
 	          </div>
 	        </div>

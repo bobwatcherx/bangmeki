@@ -1,6 +1,6 @@
 <script>
   import { onMount ,afterUpdate} from 'svelte';
- import {BASE_API} from '../../base/domain.js'
+ import {BASE_API,key_api} from '../../base/domain.js'
 
   import {Link,navigate} from 'svelte-navigator'
   let videos = []
@@ -8,7 +8,7 @@
  let searchTitle = "sextb"
  
   let currentpage = 1
-  let selectedOption = "";
+  let selectedOption = "100";
 
   const options = [50, 100, 300,500];
 const url  = BASE_API + "/cari"
@@ -19,25 +19,12 @@ async function getapi(page){
     if(searchTerm == ""){
       searchTerm = "sextb"
     }
-    const response = await fetch(`${url}?search=${searchTitle}&page=${page}&limit=${selectedOption}`);
+    const response = await fetch(`${url}?search=${searchTitle}&key_api=${key_api}&page=${page}&limit=${selectedOption}`);
     const data = await response.json();
     videos = data.videos;
      loading = false;
   }
 
-// async function getapi(page){
-//     const response = await fetch(`${base_api}/indo/?key=${apikey}&page=${page}`);
-//     const data = await response.json();
-//     videos = data.videos;
-//      loading = false;
-//   }
-  
-  //  async function getapi(page){
-  //   const response = await fetch(`${base_api}/indo/?key=${apikey}&page=${page}`);
-  //   const data = await response.json();
-  //   videos = data.videos;
-  //    loading = false;
-  // }
   onMount(async () => {
     await getapi(currentpage)
   });
