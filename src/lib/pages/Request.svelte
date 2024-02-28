@@ -21,11 +21,8 @@
     style="width: 100%;background-color: #fa0ae2;font-weight: bold;"
   >Request Kalian Disini</Link>
 	</div> -->
-	<div >
-		<p>Demi Anak Sayang Bokep . Kami Selaku Pengepul bokep . akan selalu memberikan bokep terupdate , termontok , terbohai setiap hari . jadi jangan lupa untuk pantau web ini . yang mau request </p>
-	</div>
 </div>
 
 <div style="margin-top:20px;background-color: white;">
-	<iframe src="https://bobwatcherx.github.io/requestbo/" width="100%" height="700px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+	<iframe src="https://bobwatcherx.github.io/chatbokep/" width="100%" height="700px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
 </div>

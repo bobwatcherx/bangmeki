@@ -2,31 +2,41 @@
   export let id;
   import { onMount } from 'svelte';
   import { Link,navigate } from 'svelte-navigator';
- import {BASE_API,key_api} from '../../base/domain.js'
+ 	import {BASE_netlify,BASE_DOMAIN,shortlink,key_api} from '../../base/domain.js'
+  import { genreList } from '../../base/domain.js';
  	import Swal from 'sweetalert2';
 
-  import {BASE_DOMAIN} from '../../base/domain.js'
   let loading = true;
   let relatedVideos = [];
 
-  
-  async function related() {
-  const url = BASE_API + "/related?key_api=" + key_api;
-  loading = true; // Menampilkan indikator loading
+  function setRandomFolderId() {
+        const randomIndex = Math.floor(Math.random() * genreList.length);
+        let resrandom = Object.values(genreList[randomIndex])[0];
+        return resrandom;
+    }
 
+  let selectedGenre = setRandomFolderId(); 
+
+  async function related() {
+  loading = true; 
+    let url = BASE_netlify + "/poop_byfolder";
+    if (selectedGenre != "") {
+      url += `?fld_id=${selectedGenre}`;
+    }
   try {
-    const response = await fetch(url); // Mengambil data dengan URL terpilih dan nomor halaman terpilih
+    const response = await fetch(url); 
     const data = await response.json();
     relatedVideos = data.videos;
   } catch (error) {
     console.error("Gagal mengambil video terkait:", error);
   } finally {
-    loading = false; // Sembunyikan indikator loading setelah data diambil
+    loading = false; 
   }
 }
 
 
   onMount(() => {
+  setRandomFolderId()
     related();
   });
 
@@ -34,9 +44,7 @@
     id = myid;
     related();
   }
-   function handleContextMenu(event) {
-    event.preventDefault();
-  }
+
 function opentutor() {
     Swal.fire({
       title: 'Tutorial Download BOKEP',
@@ -50,6 +58,21 @@ function opentutor() {
       showConfirmButton: false,
     });
   }
+
+  function simpanbokep(video) {
+    let nontonNanti = JSON.parse(localStorage.getItem('nonton-nanti')) || []; 
+    nontonNanti.push(video); 
+    localStorage.setItem('nonton-nanti', JSON.stringify(nontonNanti)); 
+     Swal.fire({
+      toast:true,
+      icon: 'success',
+      title: 'Berhasil Disimpan Ke nonton nanti',
+      position: 'top-center', 
+      showConfirmButton: false,
+      timer: 2000
+    });
+  }
+
 </script>
 
 <div>
@@ -61,6 +84,12 @@ function opentutor() {
 		Kembali
 	</button>
 	
+	<Link to="/tonton" class="waves-effect btn "
+	style="background-color: blue;font-weight: bold;color:white"
+	>
+		Tonton nanti
+	</Link>
+
 	<Link to="/caribokep" class="waves-effect btn "
 	style="background-color: #b00c50;font-weight: bold;color:white"
 	>
@@ -78,10 +107,9 @@ function opentutor() {
 	<!-- TOMBOL DOWNLOAD -->
 	<div style="margin:10px">
 		<a 
-		 href={`https://cuty.io/quick?token=3c2f8445e662326c2ebcd8d60&url=${BASE_DOMAIN}/d/${id}`}
+		 href={`https://cuty.io/quick?token=${shortlink}&url=${BASE_DOMAIN}/d/${id}`}
 		 target="_blank"
 		class="waves-effect btn"
-		on:contextmenu="{handleContextMenu}"
 		style="width: 100%;
 		background-color: #b00c50;color:white;font-weight: bold;
 		"> Download Bokep Disini </a>
@@ -123,7 +151,7 @@ function opentutor() {
 	  <div class="row g-0">
 	  		{#each relatedVideos as video (video.id)}
 	    <div class="col-6 col-md-4 col-lg-3 col-sm-6" >
-	      <div class="card shadow" on:click={()=>gotopage(video.id)}>
+	      <div class="card shadow" >
 	        <div >
 	          <img src={video.image} alt={video.title} style="width:100%;background-size:cover;">
 	        </div>
@@ -134,8 +162,11 @@ function opentutor() {
 	          <p style="color:#b00c50;font-weight: bold"> {video.date_formatted}</p>
 	          </div>
 	        </div>
-	        <div style="display:flex;justify-content: center;">
-            <!-- ACTION -->
+	        <div style="display:flex;justify-content: space-around;">
+            	<button class="btn waves-effect blue" style="background-color: blue;color:white;"
+              on:click={simpanbokep(video)}
+              >Simpan</button>
+
               <button on:click={()=>gotopage(video.id)} class="waves-effect btn waves-light"
               style="background-color: #b00c50;color:white;
               "

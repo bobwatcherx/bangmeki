@@ -1,7 +1,7 @@
 <script>
   import { onMount ,afterUpdate} from 'svelte';
- import {BASE_API,key_api} from '../../base/domain.js'
-
+ import {BASE_netlify,key_api} from '../../base/domain.js'
+  import Swal from 'sweetalert2';
   import {Link,navigate} from 'svelte-navigator'
   let videos = []
  let loading = true;
@@ -11,7 +11,7 @@
   let selectedOption = "100";
 
   const options = [50, 100, 300,500];
-const url  = BASE_API + "/cari"
+const url  = BASE_netlify + "/poop_cari" 
 
 async function getapi(page){
   loading = true
@@ -19,7 +19,7 @@ async function getapi(page){
     if(searchTerm == ""){
       searchTerm = "sextb"
     }
-    const response = await fetch(`${url}?search=${searchTitle}&key_api=${key_api}&page=${page}&limit=${selectedOption}`);
+    const response = await fetch(`${url}?title=${searchTitle}&page=${page}&limit=${selectedOption}`);
     const data = await response.json();
     videos = data.videos;
      loading = false;
@@ -37,6 +37,20 @@ async function getapi(page){
       await getapi(currentpage);
     }
   }
+   function simpanbokep(video) {
+    let nontonNanti = JSON.parse(localStorage.getItem('nonton-nanti')) || []; 
+    nontonNanti.push(video); 
+    localStorage.setItem('nonton-nanti', JSON.stringify(nontonNanti)); 
+     Swal.fire({
+      toast:true,
+      icon: 'success',
+      title: 'Berhasil Disimpan Ke nonton nanti',
+      position: 'top-center', 
+      showConfirmButton: false,
+      timer: 2000
+    });
+  }
+
 </script>
 
 
@@ -46,6 +60,12 @@ async function getapi(page){
     class="btn" 
     style="background-color: #ff8c08;color:black;"
     >Kembali</button>
+    <Link to="/tonton" class="waves-effect btn "
+  style="background-color: blue;font-weight: bold;color:white"
+  >
+    Tonton nanti
+  </Link>
+
 </div>
 <div style="margin:30px">
   <p style="font-size:15px;font-weight: bold;">Lu cari bokep yang lu mau disini</p>
@@ -88,26 +108,26 @@ async function getapi(page){
 
 
 {:else}
-<div class="row g-0">
+<div class="row g-0 mb-2">
   {#each videos as video (video.id)}
     <div class="col-6 col-md-3 col-lg-3 col-sm-6">
       <div class="card shadow">
-        <Link class="linkto" to={`/player/${video.id}`}>
           <img src={video.image} alt={video.title} 
           style="width:100%;background-size: cover;"
           />
         <div class="card-body">
           <h6 style="font-weight:bold;color:#b00c50;font-size: 14px">{video.title.length > 40 ? `${video.title.slice(0, 40)}...` : video.title}</h6>
           <div >
-             <p class="card-text">Durasi : {video.duration}</p>
           <p class="card-text"  style="color:#b00c50;font-weight: bold">{video.date_formatted}
          </p>
           </div>
-             <p class="card-text">Ditonton : {video.views}</p>
 
 
-          <div style="display:flex;justify-content: end;">
+          <div style="display:flex;justify-content: space-around;">
             <!-- ACTION -->
+            <button class="btn waves-effect blue" style="background-color: blue;color:white;"
+              on:click={simpanbokep(video)}
+              >Simpan</button>
               <Link to={`/player/${video.id}`} class="waves-effect btn waves-light"
               style="background-color: #fabb0f;color: black;
               border-radius: 30px;
@@ -117,7 +137,6 @@ async function getapi(page){
             </Link>
           </div>
         </div>
-        </Link>
 
       </div>
     </div>
