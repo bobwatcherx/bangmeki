@@ -6,8 +6,8 @@ export let key_api = "raQu2lrd"
 export let BASE_netlify = "/.netlify/functions"
 export let shortlink = "3c2f8445e662326c2ebcd8d60"
 // TOTAL FOLDER per 50 DATA
-export let total_folder_indo = "2667"
-export let total_folder_jepang = "1164"
+export let total_folder_indo = "2669"
+export let total_folder_jepang = "1166"
 
 
 
