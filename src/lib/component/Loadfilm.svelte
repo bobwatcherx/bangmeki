@@ -1,20 +1,38 @@
 <!-- Loadfilm.svelte -->
 <script>
   import { onMount } from 'svelte';
-  import { BASE_netlify } from '../../base/domain.js';
+  import { 
+    BASE_netlify,
+    key_api,
+    f_indo,
+    f_jepang,
+    total_folder_indo,
+    total_folder_jepang
+     } from '../../base/domain.js';
   import Swal from 'sweetalert2';
   import { Link } from 'svelte-navigator';
 
   let videos = [];
   let loading = true;
+  let currentpage = 1
   export let folder_id;
+
+
 
   async function getapi() {
     loading = true
-    let url = BASE_netlify + "/poop_byfolder"; // Menginisialisasi ulang URL di sini
+    let url = BASE_netlify + "/poop_byfolder"; 
+
+
     if (folder_id != "") {
-      url += `?fld_id=${folder_id}`;
+       if (folder_id == f_indo) {
+        currentpage = Math.floor(Math.random() * total_folder_indo) + 1;
+    } else if (folder_id == f_jepang) {
+        currentpage = Math.floor(Math.random() * total_folder_jepang) + 1;
     }
+
+    }
+    url += `?fld_id=${folder_id}&key=${key_api}&page=${currentpage}&limit=50`;
     const response = await fetch(`${url}`);
     const data = await response.json();
     videos = data.videos;
@@ -26,10 +44,17 @@
   });
 
   async function tambahbokep() {
-    let url = BASE_netlify + "/poop_byfolder"; // Menginisialisasi ulang URL di sini
-    if (folder_id != "") {
-      url += ``;
+    let url = BASE_netlify + "/poop_byfolder"; 
+     if (folder_id != "") {
+       if (folder_id == f_indo) {
+        currentpage = Math.floor(Math.random() * total_folder_indo) + 1;
+    } else if (folder_id == f_jepang) {
+        currentpage = Math.floor(Math.random() * total_folder_jepang) + 1;
     }
+
+    }
+    url += `?fld_id=${folder_id}&key=${key_api}&page=${currentpage}&limit=50`;
+    
     const response = await fetch(`${url}`);
     const data = await response.json();
     videos = [...videos, ...data.videos];

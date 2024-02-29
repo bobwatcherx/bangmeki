@@ -19,7 +19,7 @@ async function getapi(page){
     if(searchTerm == ""){
       searchTerm = "sextb"
     }
-    const response = await fetch(`${url}?title=${searchTitle}&page=${page}&limit=${selectedOption}`);
+    const response = await fetch(`${url}?title=${searchTitle}&page=${page}&limit=${selectedOption}&key=${key_api}`);
     const data = await response.json();
     videos = data.videos;
      loading = false;

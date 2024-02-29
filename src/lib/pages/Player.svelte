@@ -2,13 +2,22 @@
   export let id;
   import { onMount } from 'svelte';
   import { Link,navigate } from 'svelte-navigator';
- 	import {BASE_netlify,BASE_DOMAIN,shortlink,key_api} from '../../base/domain.js'
+ 	import {
+ 		BASE_netlify,
+ 		BASE_DOMAIN,
+ 		shortlink,
+ 		key_api,
+ 		f_indo,
+ 		f_jepang,
+ 	total_folder_indo,
+    total_folder_jepang
+} from '../../base/domain.js'
   import { genreList } from '../../base/domain.js';
  	import Swal from 'sweetalert2';
 
   let loading = true;
   let relatedVideos = [];
-
+  let currentpage = 1
   function setRandomFolderId() {
         const randomIndex = Math.floor(Math.random() * genreList.length);
         let resrandom = Object.values(genreList[randomIndex])[0];
@@ -21,7 +30,12 @@
   loading = true; 
     let url = BASE_netlify + "/poop_byfolder";
     if (selectedGenre != "") {
-      url += `?fld_id=${selectedGenre}`;
+       if (selectedGenre == f_indo) {
+        currentpage = Math.floor(Math.random() * total_folder_indo) + 1;
+    } else if (selectedGenre == f_jepang) {
+        currentpage = Math.floor(Math.random() * total_folder_jepang) + 1;
+    }
+      url += `?fld_id=${selectedGenre}&page=${currentpage}&limit=50&key=${key_api}`;
     }
   try {
     const response = await fetch(url); 
