@@ -3,7 +3,7 @@ export let BASE_DOMAIN = "https://doodx.pro"
 // export let BASE_API = "https://bobwatcherx-serverpoophd.hf.space"
 export let BASE_API = "https://poophd.com/api"
 export let key_api = "raQu2lrd"
-export let BASE_netlify = "https://poopcloudflare.bobwatcherx3755.workers.dev"
+export let BASE_netlify = "https://detapoop-1-k6457714.deta.app"
 // export let BASE_netlify = "/.netlify/functions"
 export let shortlink = "3c2f8445e662326c2ebcd8d60"
 // TOTAL FOLDER per 50 DATA
