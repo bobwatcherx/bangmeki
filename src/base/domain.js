@@ -1,5 +1,5 @@
 // PLAYER DOMAIN
-export let BASE_DOMAIN = "https://doodx.pro"
+export let BASE_DOMAIN = "https://dood.com.de"
 // export let BASE_API = "https://bobwatcherx-serverpoophd.hf.space"
 export let BASE_API = "https://poophd.com/api"
 export let key_api = "raQu2lrd"
